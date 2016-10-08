@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.UserDao">
+ 
+  <select id="findUsers" resultType="com.example.domain.User">
+    select name, age, password from user
+  </select>
+
+  <update id="updateLoginInfo" parameterType="com.example.domain.User">
+    UPDATE
+       USER
+    SET age=#{age}
+    WHERE id = #{id}
+  </update>
+
+  <select id="findByPage" resultType="com.example.domain.User">
+    select name, age, password from user
+  </select>
+
+  <select id="findByPasswordPage" resultType="com.example.domain.User" parameterType="java.util.HashMap">
+    select
+      name, age, password
+    from user
+    WHERE password = #{t.password}
+  </select>
+ 
+</mapper>
